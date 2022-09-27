@@ -1,9 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 public class Game {
-    // Вам нужно хранить всех зарегистрированных игроков в поле класса Game в виде списка.
-    List<Player> players = new ArrayList<>(); // храним всех зарегистрированных игроков в списке
+    // Вам нужно хранить всех зарегистрированных игроков в поле класса Game в виде HashMap.
+    HashMap<Integer, Player> players = new HashMap<>(); // храним всех зарегистрированных игроков в HashMap
 
     // дата-класс игрока player (id, name, strength)
     // players - массив
@@ -11,8 +10,8 @@ public class Game {
 
     // Метод регистрации игрока.
     // Если игрок НЕ зарегистрирован, то он НЕ сможет играть в турнире.
-    public void register(Player player) {
-        players.add(player);
+    public void register(Integer key, Player player) {
+        players.put(key, player);
     }
 
     // Метод соревнования между двумя игроками.
@@ -31,12 +30,12 @@ public class Game {
         // игрок  playerName1 или игрок playerName2 не зарегистрированы
         Player player1 = null;
         Player player2 = null;
-        for (Player player : players) {
-            if (player.getName().equals(playerName1)) {
-                player1 = player;
+        for (Integer key : players.keySet()) {
+            if (players.get(key).getName().equals(playerName1)) {
+                player1 = players.get(key);
             }
-            if (player.getName().equals(playerName2)) {
-                player2 = player;
+            if (players.get(key).getName().equals(playerName2)) {
+                player2 = players.get(key);
             }
         }
         if (player1 == null) {

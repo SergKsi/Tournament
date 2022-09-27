@@ -2,13 +2,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+
 
 public class GameTest {
     Game game = new Game();
-    List<Player> players = new ArrayList<>();
+
+    HashMap<Integer, Player> players = new HashMap<>();
+    ;
     Player player1 = new Player(12, "Ivanov", 35);
     Player player2 = new Player(15, "Petrov", 45);
     Player player3 = new Player(8, "Sidorov", 51);
@@ -16,10 +17,10 @@ public class GameTest {
 
     @BeforeEach
     public void setup() {
-        game.register(player1);
-        game.register(player2);
-        game.register(player3);
-        game.register(player4);
+        game.register(player1.getId(), player1);
+        game.register(player2.getId(), player2);
+        game.register(player3.getId(), player3);
+        game.register(player4.getId(), player4);
     }
 
     // соревнования - первый не зарегистрирован
